@@ -4,7 +4,7 @@ from core import views
 router = DefaultRouter()
 
 router.register(r'publisher', views.PublisherViewSet, basename='publisher')
-
+router.register(r'author', views.AuthorViewSet, basename='author')
 
 urlpatterns = [
     path('', include(router.urls)),

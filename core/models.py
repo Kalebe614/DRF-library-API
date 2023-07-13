@@ -13,3 +13,9 @@ class PublisherModel(BaseModel):
 
     def __str__(self):
         return self.name
+    
+class AuthorModel(BaseModel):
+    first_name = models.CharField('First Name', max_length=50)
+    last_name = models.CharField('Last Name', max_length=50)
+    about = models.TextField('About')
+
