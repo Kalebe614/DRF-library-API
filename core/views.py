@@ -1,6 +1,6 @@
 from rest_framework import viewsets, mixins
-from .models import PublisherModel, AuthorModel
-from .serializers import PublisherSerializer, AuthorSerializer
+from .models import PublisherModel, AuthorModel, BookModel
+from .serializers import PublisherSerializer, AuthorSerializer, BookSerializer
 
 class PublisherViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
                        mixins.UpdateModelMixin, mixins.DestroyModelMixin,
@@ -15,3 +15,10 @@ class AuthorViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
     
     queryset = AuthorModel.objects.all()
     serializer_class = AuthorSerializer
+
+class BookViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
+                  mixins.UpdateModelMixin, mixins.DestroyModelMixin,
+                  mixins.ListModelMixin, viewsets.GenericViewSet):
+    
+    queryset = BookModel.objects.all()
+    serializer_class = BookSerializer
