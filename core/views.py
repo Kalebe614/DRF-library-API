@@ -3,8 +3,7 @@ from .models import PublisherModel, AuthorModel, BookModel
 from .serializers import PublisherSerializer, AuthorSerializer, BookSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
-from rest_framework.reverse import reverse
-from rest_framework.decorators import api_view
+from rest_framework import permissions
 
 class PublisherViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
                        mixins.UpdateModelMixin, mixins.DestroyModelMixin,
@@ -12,6 +11,14 @@ class PublisherViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
     
     queryset = PublisherModel.objects.all()
     serializer_class = PublisherSerializer
+
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [permissions.AllowAny]  # Acesso público para listar
+        else:
+            permission_classes = [permissions.IsAuthenticated]  # Outras ações exigem autenticação
+        return [permission() for permission in permission_classes]
+    
 
     @action(detail=True, methods=['get'])
     def books(self, request, pk=None):
@@ -27,6 +34,13 @@ class AuthorViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
     queryset = AuthorModel.objects.all()
     serializer_class = AuthorSerializer
 
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [permissions.AllowAny]  # Acesso público para listar
+        else:
+            permission_classes = [permissions.IsAuthenticated]  # Outras ações exigem autenticação
+        return [permission() for permission in permission_classes]
+
     @action(detail=True, methods=['get'])
     def books(self,request, pk=None):
         author = self.get_object()
@@ -41,4 +55,12 @@ class BookViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
     
     queryset = BookModel.objects.all()
     serializer_class = BookSerializer
+
+    def get_permissions(self):
+        if self.action == 'list':
+            permission_classes = [permissions.AllowAny]  # Acesso público para listar
+        else:
+            permission_classes = [permissions.IsAuthenticated]  # Outras ações exigem autenticação
+        return [permission() for permission in permission_classes]
+
 
