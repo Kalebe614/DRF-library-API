@@ -27,7 +27,7 @@ class AuthorModel(BaseModel):
 class BookModel(BaseModel):
     
     isbn10 = models.IntegerField('Isbn 10', unique=True)
-    title = models.CharField('Title', max_length=100)
+    title = models.CharField('Title', max_length=500)
     author = models.ForeignKey(AuthorModel, on_delete=models.CASCADE, related_name='books')
     publisher = models.ForeignKey(PublisherModel, on_delete=models.CASCADE, related_name='books')
     language = models.CharField('Language', max_length=50)
