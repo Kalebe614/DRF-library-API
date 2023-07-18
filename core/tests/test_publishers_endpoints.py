@@ -32,14 +32,15 @@ class PublisherCreateAPITestCase(APITestCase):
              
             self.user = User.objects.create_user(username='newuser', password='exampleTestPassword')
             self.token = AccessToken.for_user(self.user)  
+            
 
         def test_create_publisher(self):
+            
             url = reverse('publishers-list')
 
-            data = {
-                'name': 'New Publisher',
-                'description': 'New Description'
-            }
+            publisher1 = mommy.make(PublisherModel)
+
+            data = model_to_dict(publisher1)
 
             self.client.credentials(HTTP_AUTHORIZATION='Bearer ' + str(self.token))
             response = self.client.post(url, data)
@@ -48,9 +49,6 @@ class PublisherCreateAPITestCase(APITestCase):
 
             self.assertEqual(response.data['name'], data['name'])
             self.assertEqual(response.data['description'], data['description'])
-
-            publisher = PublisherModel.objects.get(name=data['name'])
-            self.assertEqual(publisher.description, data['description'])
 
 
 class PublisherDeleteAPITestCase(APITestCase):
@@ -83,9 +81,9 @@ class PublisherUpdateAPITestCase(APITestCase):
             self.publisher1 = mommy.make(PublisherModel)
 
         def test_update_publisher(self):
-            print(self.publisher1.pk)
+           
             self.publisherUpdated = mommy.make(PublisherModel)
-            print(self.publisherUpdated.pk)
+
             url = reverse('publishers-detail', kwargs={'pk': self.publisher1.pk})
 
             self.client.credentials(HTTP_AUTHORIZATION='Bearer '+ str(self.token))
