@@ -35,7 +35,7 @@ class AuthorViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
     serializer_class = AuthorSerializer
 
     def get_permissions(self):
-        if self.action == 'list':
+        if self.action == 'list' or 'detail':
             permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # Acesso público para listar
         else:
             permission_classes = [permissions.IsAuthenticated]  # Outras ações exigem autenticação
