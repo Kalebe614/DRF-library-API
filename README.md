@@ -54,7 +54,7 @@ This project was created as a foundation for learning and showcasing the use of 
 <p>1. Clone the repository:
 
 ```
-https://github.com/Kalebe614/drf-library-api.git
+git clone https://github.com/Kalebe614/drf-library-api.git
 ```
 
 </p>
@@ -63,7 +63,7 @@ https://github.com/Kalebe614/drf-library-api.git
 2. Navigate to the project directory:
 
 ```
-cd drf_library_api
+cd drf-library-api
 ```
 </p> 
  
