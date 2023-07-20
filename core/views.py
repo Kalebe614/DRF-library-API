@@ -13,8 +13,8 @@ class PublisherViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
     serializer_class = PublisherSerializer
 
     def get_permissions(self):
-        if self.action == 'list':
-            permission_classes = [permissions.AllowAny]  # Acesso público para listar
+        if self.action == 'list' or 'detail':
+            permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # Acesso público para listar
         else:
             permission_classes = [permissions.IsAuthenticated]  # Outras ações exigem autenticação
         return [permission() for permission in permission_classes]
@@ -36,9 +36,10 @@ class AuthorViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
 
     def get_permissions(self):
         if self.action == 'list':
-            permission_classes = [permissions.AllowAny]  # Acesso público para listar
+            permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # Acesso público para listar
         else:
             permission_classes = [permissions.IsAuthenticated]  # Outras ações exigem autenticação
+        
         return [permission() for permission in permission_classes]
 
     @action(detail=True, methods=['get'])
@@ -57,8 +58,8 @@ class BookViewSet(mixins.CreateModelMixin, mixins.RetrieveModelMixin,
     serializer_class = BookSerializer
 
     def get_permissions(self):
-        if self.action == 'list':
-            permission_classes = [permissions.AllowAny]  # Acesso público para listar
+        if self.action == 'list' or 'detail':
+            permission_classes = [permissions.IsAuthenticatedOrReadOnly]  # Acesso público para listar
         else:
             permission_classes = [permissions.IsAuthenticated]  # Outras ações exigem autenticação
         return [permission() for permission in permission_classes]
