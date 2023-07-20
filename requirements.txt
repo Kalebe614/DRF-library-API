@@ -12,7 +12,6 @@ inflection==0.5.1
 iniconfig==2.0.0
 jsonpath==0.82
 Markdown==3.4.3
-model-mommy==2.0.0
 packaging==23.1
 pluggy==1.2.0
 PyJWT==2.7.0
