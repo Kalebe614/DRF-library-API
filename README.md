@@ -12,7 +12,7 @@
 
 [redoc]: https://swagger.io/blog/api-development/redoc-openapi-powered-documentation/
 
-[my_github]: https://github.com/Kalebe614
+[my_github]: https://kalebe614.github.io/
 
 #### <p align="center">Description
 This project is a simple API developed with Django using the Django Rest Framework ([DRF]). Inspired by the concept of a basic library, the project offers three options for registration: book, publisher (publicadora), and author.
