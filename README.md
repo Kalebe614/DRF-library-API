@@ -29,7 +29,7 @@ Interactive documentation using [Swagger] and [Redoc].
 This project was created as a foundation for learning and showcasing the use of Django Rest Framework for building RESTful APIs. Feel free to explore the functionalities and use the API according to your needs.</p>
 
 
-![Img_Project](imgsAPI.png)
+![Img_Project](api.png)
 
 
 
